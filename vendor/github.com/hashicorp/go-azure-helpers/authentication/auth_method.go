@@ -11,6 +11,8 @@ type authMethod interface {
 
 	getAuthorizationToken(sender autorest.Sender, oauthConfig *OAuthConfig, endpoint string) (autorest.Authorizer, error)
 
+	getAuthorizationTokenV2(sender autorest.Sender, oauthConfig *OAuthConfig, endpoint string) (autorest.Authorizer, error)
+
 	name() string
 
 	populateConfig(c *Config) error

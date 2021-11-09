@@ -144,6 +144,11 @@ func (a azureCliTokenAuth) getAuthorizationToken(sender autorest.Sender, oauth *
 	return auth, nil
 }
 
+func (a azureCliTokenAuth) getAuthorizationTokenV2(sender autorest.Sender, oauth *OAuthConfig, endpoint string) (autorest.Authorizer, error) {
+	// token version is the decision of az-cli, so we'll pass through to the existing method for continuity
+	return a.getAuthorizationToken(sender, oauth, endpoint)
+}
+
 func (a azureCliTokenAuth) name() string {
 	return "Obtaining a token from the Azure CLI"
 }

@@ -74,6 +74,11 @@ func (a managedServiceIdentityAuth) getAuthorizationToken(sender autorest.Sender
 	return auth, nil
 }
 
+func (a managedServiceIdentityAuth) getAuthorizationTokenV2(sender autorest.Sender, oauth *OAuthConfig, endpoint string) (autorest.Authorizer, error) {
+	// v2 tokens not supported, so we'll pass through to the existing method for continuity
+	return a.getAuthorizationToken(sender, oauth, endpoint)
+}
+
 func (a managedServiceIdentityAuth) populateConfig(c *Config) error {
 	// nothing to populate back
 	return nil
